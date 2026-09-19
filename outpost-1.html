@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="google-site-verification" content="PW-RktTW9JO2EZ_nGkNJ0PqP6fcrBJkk1_gZ2br48qY" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outpost — Dispatches worth reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEDE7;
+    --paper-raised:#F7F6F2;
+    --ink:#1A1A18;
+    --ink-soft:#55534C;
+    --rule:#D8D4C8;
+    --accent:#2E5F5A;
+    --accent-soft:#DCE7E5;
+    --rust:#A6432C;
+    --focus:#2E5F5A;
+    --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans:'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --paper:#17181A;
+      --paper-raised:#1E2022;
+      --ink:#EDEBE4;
+      --ink-soft:#A8A69E;
+      --rule:#33352F;
+      --accent:#7FC2B8;
+      --accent-soft:#20302D;
+      --rust:#D97455;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#17181A;
+    --paper-raised:#1E2022;
+    --ink:#EDEBE4;
+    --ink-soft:#A8A69E;
+    --rule:#33352F;
+    --accent:#7FC2B8;
+    --accent-soft:#20302D;
+    --rust:#D97455;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--focus);
+    outline-offset:2px;
+  }
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* Masthead */
+  header.masthead{
+    padding:36px 0 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .masthead-top{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    padding-bottom:22px;
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:2.5rem;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  .wordmark span{color:var(--accent);}
+  .tagline{
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    margin:4px 0 0;
+    font-style:italic;
+    font-family:var(--serif);
+  }
+  .masthead-meta{
+    font-size:0.8rem;
+    color:var(--ink-soft);
+    text-align:right;
+  }
+  nav.primary{
+    display:flex;
+    gap:0;
+    flex-wrap:wrap;
+  }
+  nav.primary button{
+    background:none;
+    border:none;
+    font-family:var(--sans);
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    padding:12px 16px 12px 0;
+    margin-right:16px;
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.primary button:hover{color:var(--ink);}
+  nav.primary button.active{
+    color:var(--ink);
+    border-bottom-color:var(--accent);
+    font-weight:600;
+  }
+
+  .search-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:auto;
+    padding:8px 0 12px;
+  }
+  .search-row input{
+    font-family:var(--sans);
+    font-size:0.9rem;
+    border:1px solid var(--rule);
+    background:var(--paper-raised);
+    color:var(--ink);
+    padding:8px 12px;
+    border-radius:3px;
+    width:180px;
+    max-width:40vw;
+  }
+  .theme-toggle{
+    border:1px solid var(--rule);
+    background:var(--paper-raised);
+    color:var(--ink-soft);
+    border-radius:3px;
+    padding:7px 10px;
+    cursor:pointer;
+    font-size:0.85rem;
+    font-family:var(--sans);
+  }
+
+  nav.primary-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+
+  main{padding:36px 0 64px;}
+
+  /* List view */
+  .featured{
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:40px;
+    padding-bottom:40px;
+    margin-bottom:36px;
+    border-bottom:1px solid var(--rule);
+  }
+  @media (max-width:720px){
+    .featured{grid-template-columns:1fr;}
+  }
+  .featured-main .kicker{
+    color:var(--accent);
+    font-size:0.82rem;
+    font-weight:600;
+    margin-bottom:10px;
+    display:inline-block;
+  }
+  .featured-main h2{
+    font-family:var(--serif);
+    font-size:2.1rem;
+    line-height:1.15;
+    margin:0 0 12px;
+  }
+  .featured-main h2 a{text-decoration:none;}
+  .featured-main h2 a:hover{color:var(--accent);}
+  .dek{
+    font-family:var(--serif);
+    font-size:1.08rem;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+    max-width:60ch;
+  }
+  .byline{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .byline .rust{color:var(--rust);}
+  .author-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .avatar{
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--accent);
+    color:var(--paper);
+    font-size:0.62rem;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .featured-banner, .row-banner, .article-banner{
+    border-radius:4px;
+    overflow:hidden;
+    display:block;
+  }
+  .featured-banner{margin-bottom:16px;}
+  .row-banner{width:88px;height:64px;flex-shrink:0;}
+  .article-banner{margin-bottom:22px;height:200px;}
+  .row-banner svg, .featured-banner svg, .article-banner svg{width:100%;height:100%;display:block;}
+
+  .secondary-list{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .secondary-list .post-row{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:14px;
+    align-items:center;
+  }
+  .secondary-list .post-row h3{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    line-height:1.25;
+    margin:0 0 6px;
+  }
+  .secondary-list .post-row h3 a{text-decoration:none;}
+  .secondary-list .post-row h3 a:hover{color:var(--accent);}
+  .secondary-list .post-row .byline{font-size:0.78rem;}
+
+  .section-label{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    font-weight:600;
+    padding-bottom:10px;
+    margin-bottom:20px;
+    border-bottom:1px solid var(--rule);
+  }
+
+  .post-grid{
+    display:flex;
+    flex-direction:column;
+  }
+  .post-row{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    gap:20px;
+    align-items:start;
+    padding:22px 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .post-row:first-child{padding-top:0;}
+  @media (max-width:640px){
+    .post-row{grid-template-columns:1fr;gap:6px;}
+    .post-row .post-index{display:none;}
+  }
+  .post-index{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    padding-top:2px;
+    min-width:26px;
+  }
+  .post-body h3{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    line-height:1.25;
+    margin:0 0 8px;
+  }
+  .post-body h3 a{text-decoration:none;}
+  .post-body h3 a:hover{color:var(--accent);}
+  .post-body .dek{font-size:0.98rem;margin-bottom:8px;}
+  .post-meta-side{
+    text-align:right;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    white-space:nowrap;
+    padding-top:4px;
+  }
+  @media (max-width:640px){
+    .post-meta-side{text-align:left;}
+  }
+  .category-tag{
+    display:inline-block;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:3px 8px;
+    border-radius:3px;
+    margin-bottom:6px;
+  }
+
+  .empty-state{
+    padding:60px 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-family:var(--serif);
+    font-size:1.1rem;
+  }
+
+  /* Article view */
+  .article{
+    max-width:680px;
+    margin:0 auto;
+  }
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0 0 28px;
+    font-family:var(--sans);
+  }
+  .back-link:hover{color:var(--accent);}
+  .article .category-tag{margin-bottom:16px;}
+  .article h1{
+    font-family:var(--serif);
+    font-size:2.3rem;
+    line-height:1.15;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .article .dek{
+    font-size:1.15rem;
+    margin-bottom:18px;
+  }
+  .article .byline{
+    padding-bottom:28px;
+    margin-bottom:28px;
+    border-bottom:1px solid var(--rule);
+  }
+  .article-content{
+    font-family:var(--serif);
+    font-size:1.12rem;
+    line-height:1.7;
+  }
+  .article-content p{margin:0 0 1.3em;}
+  .article-content p:first-of-type::first-letter{
+    font-size:3.4em;
+    float:left;
+    line-height:0.85;
+    padding:0.05em 0.08em 0 0;
+    color:var(--accent);
+    font-weight:700;
+  }
+
+  footer{
+    border-top:1px solid var(--rule);
+    padding:28px 0 50px;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  footer a{color:var(--ink-soft);}
+  footer a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <div>
+        <p class="wordmark">Out<span>post</span></p>
+        <p class="tagline">Phones, laptops, and gadgets — explained simply.</p>
+      </div>
+      <div class="masthead-meta" id="todayLabel"></div>
+    </div>
+    <div class="primary-row">
+      <nav class="primary" id="categoryNav" aria-label="Categories"></nav>
+      <div class="search-row">
+        <input type="search" id="searchInput" placeholder="Search posts…" aria-label="Search posts">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">◐</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap" id="listView"></div>
+  <div class="wrap" id="articleView" style="display:none;"></div>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Outpost — tech, explained simply. Swap in your own posts in the script.</span>
+    <span>© <span id="year"></span></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- Sample content — replace/add objects here to publish your own posts ----------
+  const POSTS = [
+    {
+      id: "best-budget-phones-2026",
+      category: "Phones",
+      title: "Best budget smartphones in 2026 that don't feel like budget phones",
+      dek: "Six phones under a tight price limit that still get the camera, battery, and speed right.",
+      author: "Anush Kumar",
+      date: "2026-09-16",
+      featured: true,
+      body: [
+        "Every year the gap between a flagship phone and a budget one gets a little smaller, and 2026 is no different. The phones on this list all sit well below the price of a flagship but hold their own where it actually matters day to day: screen quality, battery life, and a camera that doesn't fall apart in low light.",
+        "The biggest jump this year is battery. Several budget models now comfortably last a full day and a half of normal use, something that used to be a flagship-only feature. Charging speed has improved too, with most models reaching half charge in under twenty minutes.",
+        "Cameras are still the place where corners get cut, so if photography matters to you, check sample shots before buying rather than trusting the megapixel number alone. A 50MP sensor with poor software can still lose to a 12MP sensor with good processing.",
+        "If you're upgrading from a phone that's three or more years old, almost anything on this list will feel like a big jump. If you're comparing between two recent budget phones, battery life and software update promises are the two things worth checking closest."
+      ]
+    },
+    {
+      id: "laptop-buying-guide-2026",
+      category: "Laptops",
+      title: "How to actually choose a laptop in 2026, without getting lost in specs",
+      dek: "A simple way to match a laptop to what you'll really use it for, instead of chasing the biggest numbers.",
+      author: "Anush Kumar",
+      date: "2026-09-13",
+      featured: false,
+      body: [
+        "Most people overbuy on laptops because spec sheets are built to be compared, not understood. The honest starting question isn't \"how much RAM\" — it's \"what will I actually be doing on this most days.\"",
+        "For browsing, documents, and video calls, almost any recent laptop with 8GB of RAM handles it fine. The moment editing photos, heavier spreadsheets, or many browser tabs enter the picture, 16GB becomes the comfortable baseline.",
+        "Battery life claims on the box are usually tested under light use — real-world battery life with video calls and multiple apps open is often 30 to 40 percent lower than advertised.",
+        "Storage matters less than it used to, since most files now live in the cloud. A smaller, faster drive usually beats a larger, slower one for everyday responsiveness."
+      ]
+    },
+    {
+      id: "ai-apps-worth-using",
+      category: "AI Tools",
+      title: "AI apps that are actually useful in 2026, not just trending",
+      dek: "Past the hype, these are the tools people keep coming back to for real, everyday tasks.",
+      author: "Anush Kumar",
+      date: "2026-09-10",
+      featured: false,
+      body: [
+        "A lot of AI apps get downloaded once out of curiosity and never opened again. The ones that stick tend to solve one specific, recurring annoyance rather than promising to do everything.",
+        "Writing assistants remain the most consistently useful category — drafting emails, cleaning up messy notes, and summarizing long documents are tasks people repeat daily, which is exactly where a small time save adds up.",
+        "Photo and video editing tools powered by AI have quietly gotten good at background removal and basic touch-ups, tasks that used to require real editing skill.",
+        "The common thread among tools that last: they fit into something you already do, rather than asking you to change your workflow to use them."
+      ]
+    },
+    {
+      id: "smart-home-starter-guide",
+      category: "Smart Home",
+      title: "Starting a smart home without wasting money on gadgets you won't use",
+      dek: "The three devices worth buying first, and the ones that usually end up in a drawer.",
+      author: "Anush Kumar",
+      date: "2026-09-06",
+      featured: false,
+      body: [
+        "Smart home setups fail most often because people buy the exciting gadget first — a smart fridge, a robot vacuum — before the boring foundation that makes everything else work well.",
+        "A smart speaker or hub is worth buying first, since it's what everything else connects to and controls. After that, smart plugs are the cheapest, most reliable upgrade — they turn any lamp or appliance smart without replacing it.",
+        "Smart lighting is usually the most satisfying upgrade day to day, but it's also where people overspend, buying more bulbs than rooms they actually use often.",
+        "The gadgets that tend to go unused are the ones that solve a problem nobody had — a smart cutting board, a connected water bottle. Before buying anything flashy, it's worth asking what daily annoyance it actually removes."
+      ]
+    },
+    {
+      id: "wireless-earbuds-comparison",
+      category: "Audio",
+      title: "Wireless earbuds under a tight budget: what you gain and what you give up",
+      dek: "A straight comparison of budget earbuds against pricier options, feature by feature.",
+      author: "Anush Kumar",
+      date: "2026-09-02",
+      featured: false,
+      body: [
+        "Budget wireless earbuds have closed most of the sound-quality gap with expensive ones. Where they still fall behind is noise cancellation, which tends to be noticeably weaker on lower-cost models.",
+        "Battery life is close to even across price points now, with most earbuds offering four to six hours per charge and a case that adds two or three more full charges.",
+        "The clearest difference shows up in call quality and app features — cheaper earbuds often skip the companion app entirely, which means no customizing sound or checking battery percentage precisely.",
+        "For most casual, everyday listening — commuting, workouts, background music — a budget pair covers it well. The upgrade to a pricier pair pays off mainly for people who travel often and rely on noise cancellation specifically."
+      ]
+    },
+    {
+      id: "phone-battery-life-tips",
+      category: "Phones",
+      title: "Simple settings that actually extend your phone's battery life",
+      dek: "No special apps needed — just a handful of settings most people never check.",
+      author: "Anush Kumar",
+      date: "2026-08-28",
+      featured: false,
+      body: [
+        "Most battery-saving advice focuses on closing apps, which barely matters on modern phones. The bigger drains are usually screen brightness left on auto in bright environments, and background app refresh left on for apps that don't need it.",
+        "Lowering screen timeout from the default thirty seconds to fifteen saves more battery over a day than most people expect, simply because the screen is the single biggest power draw on any phone.",
+        "Push notifications for apps you rarely open still wake the phone's radio to check for updates. Turning off notifications for unused apps quietly adds up over a full day.",
+        "None of these changes are dramatic on their own. Together, they typically add an extra hour or two of use without touching battery-saving mode, which most people don't like using since it slows the phone down."
+      ]
+    }
+  ];
+  // ------------------------------------------------------------------------------------------
+
+  const listView = document.getElementById('listView');
+  const articleView = document.getElementById('articleView');
+  const categoryNav = document.getElementById('categoryNav');
+  const searchInput = document.getElementById('searchInput');
+  const themeToggle = document.getElementById('themeToggle');
+  const todayLabel = document.getElementById('todayLabel');
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const dateFmt = (iso) => {
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+  };
+  todayLabel.textContent = new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' });
+
+  // Simple placeholder "photo" — an abstract banner colored by category.
+  // Swap these for your own <img src="..."> tags once you have real photos.
+  const CATEGORY_COLORS = { Phones: '#2E5F5A', Laptops: '#A6432C', 'AI Tools': '#5B6B9C', 'Smart Home': '#8C6B2E', Audio: '#6B5B95' };
+  function bannerSVG(category, seed){
+    const c = CATEGORY_COLORS[category] || '#2E5F5A';
+    const x1 = 20 + (seed * 37) % 60, x2 = 10 + (seed * 53) % 80;
+    return `<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${category} illustration">
+      <rect width="400" height="160" fill="${c}" opacity="0.14"/>
+      <circle cx="${x1 * 4}" cy="60" r="70" fill="${c}" opacity="0.22"/>
+      <circle cx="${x2 * 4}" cy="110" r="50" fill="${c}" opacity="0.3"/>
+    </svg>`;
+  }
+  function authorBadge(){
+    return `<span class="author-badge"><span class="avatar">AK</span>Anush Kumar</span>`;
+  }
+
+  const categories = ['All', ...Array.from(new Set(POSTS.map(p => p.category)))];
+  let activeCategory = 'All';
+  let query = '';
+
+  function renderNav(){
+    categoryNav.innerHTML = '';
+    categories.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.textContent = cat;
+      btn.className = cat === activeCategory ? 'active' : '';
+      btn.addEventListener('click', () => {
+        activeCategory = cat;
+        showList();
+      });
+      categoryNav.appendChild(btn);
+    });
+  }
+
+  function filteredPosts(){
+    return POSTS.filter(p => {
+      const inCategory = activeCategory === 'All' || p.category === activeCategory;
+      const q = query.trim().toLowerCase();
+      const inQuery = !q || p.title.toLowerCase().includes(q) || p.dek.toLowerCase().includes(q) || p.body.join(' ').toLowerCase().includes(q);
+      return inCategory && inQuery;
+    });
+  }
+
+  function postRowHTML(p, index){
+    return `
+      <div class="post-row">
+        <a class="row-banner" href="#post/${p.id}">${bannerSVG(p.category, index + 1)}</a>
+        <div class="post-body">
+          <span class="category-tag">${p.category}</span>
+          <h3><a href="#post/${p.id}">${p.title}</a></h3>
+          <p class="dek">${p.dek}</p>
+        </div>
+        <div class="post-meta-side">${p.author}<br>${dateFmt(p.date)}</div>
+      </div>
+    `;
+  }
+
+  function showList(){
+    articleView.style.display = 'none';
+    listView.style.display = 'block';
+    renderNav();
+    searchInput.value = query;
+
+    const posts = filteredPosts();
+
+    if (posts.length === 0){
+      listView.innerHTML = `<div class="empty-state">Nothing here yet. Try a different search or category.</div>`;
+      return;
+    }
+
+    let html = '';
+
+    const showFeatured = activeCategory === 'All' && !query.trim();
+    let rest = posts;
+
+    if (showFeatured){
+      const featured = posts.find(p => p.featured) || posts[0];
+      rest = posts.filter(p => p.id !== featured.id);
+      const others = rest.slice(0, 3);
+
+      html += `
+        <section class="featured">
+          <div class="featured-main">
+            <a class="featured-banner" href="#post/${featured.id}">${bannerSVG(featured.category, 0)}</a>
+            <span class="kicker">${featured.category}</span>
+            <h2><a href="#post/${featured.id}">${featured.title}</a></h2>
+            <p class="dek">${featured.dek}</p>
+            <p class="byline">${authorBadge()} · ${dateFmt(featured.date)}</p>
+          </div>
+          <div class="secondary-list">
+            ${others.map((p, i) => `
+              <div class="post-row" style="border:none;padding:0;">
+                <a class="row-banner" href="#post/${p.id}">${bannerSVG(p.category, i + 10)}</a>
+                <div class="post-body">
+                  <h3><a href="#post/${p.id}">${p.title}</a></h3>
+                  <p class="byline">${dateFmt(p.date)}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+      `;
+      rest = rest.slice(3);
+    }
+
+    html += `<div class="section-label">${showFeatured ? 'More dispatches' : (query.trim() ? `Results for “${query.trim()}”` : activeCategory)}</div>`;
+    html += `<div class="post-grid">${rest.map((p, i) => postRowHTML(p, i)).join('')}</div>`;
+
+    listView.innerHTML = html;
+  }
+
+  function showArticle(id){
+    const post = POSTS.find(p => p.id === id);
+    if (!post){ showList(); return; }
+
+    listView.style.display = 'none';
+    articleView.style.display = 'block';
+
+    articleView.innerHTML = `
+      <article class="article">
+        <button class="back-link" id="backBtn">← Back to all posts</button>
+        <div class="article-banner">${bannerSVG(post.category, POSTS.indexOf(post) + 20)}</div>
+        <span class="category-tag">${post.category}</span>
+        <h1>${post.title}</h1>
+        <p class="dek">${post.dek}</p>
+        <p class="byline">By ${authorBadge()} · <span class="rust">${dateFmt(post.date)}</span></p>
+        <div class="article-content">
+          ${post.body.map(p => `<p>${p}</p>`).join('')}
+        </div>
+      </article>
+    `;
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.hash = '';
+    });
+    window.scrollTo(0, 0);
+  }
+
+  function route(){
+    const hash = window.location.hash;
+    if (hash.startsWith('#post/')){
+      showArticle(hash.replace('#post/', ''));
+    } else {
+      showList();
+    }
+  }
+
+  window.addEventListener('hashchange', route);
+
+  let searchTimer;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      query = e.target.value;
+      if (window.location.hash.startsWith('#post/')) window.location.hash = '';
+      showList();
+    }, 120);
+  });
+
+  // Theme toggle (per-viewer, stored locally)
+  function applyTheme(theme){
+    if (theme === 'light' || theme === 'dark'){
+      document.documentElement.setAttribute('data-theme', theme);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }
+  try{
+    const saved = localStorage.getItem('outpost-theme');
+    if (saved) applyTheme(saved);
+  } catch(e){}
+
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentlyDark = current === 'dark' || (!current && prefersDark);
+    const next = currentlyDark ? 'light' : 'dark';
+    applyTheme(next);
+    try{ localStorage.setItem('outpost-theme', next); } catch(e){}
+  });
+
+  route();
+})();
+</script>
+
+</body>
+</html>
